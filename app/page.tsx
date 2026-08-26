@@ -1,7 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const sourceUrl = "https://github.com/outsideness-x/diple";
-const privacyUrl = `${sourceUrl}#privacy-policy`;
+const privacyUrl = "/privacy";
+const appStoreUrl = "#download";
 const mailUrl = "mailto:outsidenessx@gmail.com";
 
 type ScreenProps = {
@@ -49,11 +51,12 @@ export default function Home() {
         <a className="wordmark" href="#top" aria-label="diple home">diple.</a>
         <nav className="edition-nav" aria-label="On this page">
           <a href="#reader">Reader</a>
+          <a href="#feel">Feel</a>
           <a href="#memory">Memory</a>
-          <a href="#privacy">Privacy</a>
+          <Link href={privacyUrl}>Privacy</Link>
         </nav>
         <a className="source-link" href={sourceUrl} target="_blank" rel="noreferrer">
-          Open source <Arrow />
+          GitHub <Arrow />
         </a>
       </header>
 
@@ -71,9 +74,15 @@ export default function Home() {
             <strong>Completely free.</strong>
             <span>No subscription. No paid tier.</span>
           </p>
-          <a className="text-link" href="#reader">
-            Enter the reading room <span aria-hidden="true">↓</span>
-          </a>
+          <div className="hero-actions">
+            <a className="text-link" href="#reader">
+              Enter the reading room <span aria-hidden="true">↓</span>
+            </a>
+            <a className="store-link" href={appStoreUrl}>
+              <span>App Store</span>
+              <small>Soon</small>
+            </a>
+          </div>
         </div>
 
         <div className="hero-object" aria-label="diple reader preview">
@@ -154,6 +163,71 @@ export default function Home() {
         </blockquote>
         <p>Mary Wollstonecraft Shelley · Frankenstein</p>
         <div className="quote-comment">Keep for the essay<br />on the sublime.</div>
+      </section>
+
+      <section className="tactile" id="feel" aria-labelledby="tactile-title">
+        <div className="tactile-heading reveal">
+          <p className="section-index">Interlude / The page as a place</p>
+          <h2 id="tactile-title">Reading you can<br /><em>almost feel.</em></h2>
+          <p className="tactile-lede">
+            A good book has a physical logic: weight, rhythm, a margin waiting
+            for your hand. diple brings that feeling to glass. The text keeps
+            its measure, the page holds still, and a thought can live beside
+            the sentence that made it.
+          </p>
+        </div>
+
+        <div className="tactile-stage">
+          <Screen
+            src="/screens/02-living-margins.png"
+            alt="A handwritten thought resting in the dark margin beside the page"
+            className="tactile-focus screen-natural"
+          />
+          <div className="tactile-observation reveal">
+            <p className="tactile-number">01</p>
+            <h3>Not an endless feed.<br /><em>A page with edges.</em></h3>
+            <p>
+              Open a living margin without losing the passage beneath it. Your
+              note stays spatially attached to the line that called it into being.
+            </p>
+          </div>
+        </div>
+
+        <div className="tactile-gallery" aria-label="New diple reading details">
+          <article className="tactile-card tactile-card-wide reveal">
+            <Screen
+              src="/screens/01-living-margin-note.png"
+              alt="A handwritten note beside a highlighted passage in the Carbon reader theme"
+              className="screen-natural"
+            />
+            <div>
+              <span>02 / Living margin</span>
+              <h3>A thought stays where it happened.</h3>
+            </div>
+          </article>
+          <article className="tactile-card tactile-card-low reveal">
+            <Screen
+              src="/screens/07-reader-controls.png"
+              alt="Reader controls with paper moods, typefaces, size and spacing"
+              className="screen-natural"
+            />
+            <div>
+              <span>03 / Your measure</span>
+              <h3>Type, spacing and paper tone become part of the reading.</h3>
+            </div>
+          </article>
+          <article className="tactile-card reveal">
+            <Screen
+              src="/screens/05-second-read.png"
+              alt="Second Read gathering memorable passages into a personal edition"
+              className="screen-natural"
+            />
+            <div>
+              <span>04 / Second Read</span>
+              <h3>The traces you leave become a book you can return to.</h3>
+            </div>
+          </article>
+        </div>
       </section>
 
       <section className="chapter memory-chapter" id="memory">
@@ -258,9 +332,9 @@ export default function Home() {
             choose sync, they travel through your own iCloud account—not ours.
             The entire source is public, because trust should be inspectable.
           </p>
-          <a className="text-link dark-link" href={privacyUrl} target="_blank" rel="noreferrer">
+          <Link className="text-link dark-link" href={privacyUrl}>
             Read the privacy policy <Arrow />
-          </a>
+          </Link>
         </div>
         <div className="privacy-ledger">
           <div><span>Accounts</span><strong>None</strong></div>
@@ -291,13 +365,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="finale" aria-labelledby="finale-title">
+      <section className="finale" id="download" aria-labelledby="finale-title">
         <div className="finale-folio">The end is where the margin begins · 2026</div>
         <h2 id="finale-title">Keep what<br /><em>keeps you.</em></h2>
         <div className="finale-actions">
-          <a className="primary-action" href={sourceUrl} target="_blank" rel="noreferrer">
-            Explore diple on GitHub <Arrow />
-          </a>
+          <div className="download-actions">
+            <a className="primary-action" href={sourceUrl} target="_blank" rel="noreferrer">
+              Explore diple on GitHub <Arrow />
+            </a>
+            <a className="store-action" href={appStoreUrl} aria-label="diple on the App Store, coming soon">
+              <span>App Store</span>
+              <strong>Soon</strong>
+            </a>
+          </div>
           <p>For iPhone, iPad and Mac.<br />Free. Private. Open source. Yours.</p>
         </div>
         <div className="finale-wordmark" aria-hidden="true">diple.</div>
@@ -308,7 +388,8 @@ export default function Home() {
         <p>Private reading, in public source.</p>
         <div>
           <a href={sourceUrl} target="_blank" rel="noreferrer">GitHub <Arrow /></a>
-          <a href={privacyUrl} target="_blank" rel="noreferrer">Privacy <Arrow /></a>
+          <a href={appStoreUrl}>App Store · Soon</a>
+          <Link href={privacyUrl}>Privacy <Arrow /></Link>
           <a href={mailUrl}>Contact <Arrow /></a>
         </div>
       </footer>
