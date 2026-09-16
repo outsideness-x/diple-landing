@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { appStoreHref, site } from "./site";
+import { appStoreLink, site } from "./site";
 import { Mark } from "./components/Mark";
 import { Masthead } from "./components/Masthead";
 import { Footer } from "./components/Footer";
@@ -101,8 +101,8 @@ export default function Home() {
               </p>
 
               <div className="hero-actions">
-                <a className="btn btn-primary" href={appStoreHref}>
-                  Get diple {site.appStoreUrl ? null : <small>Soon</small>}
+                <a className="btn btn-primary" {...appStoreLink}>
+                  Download on the App Store
                 </a>
                 <a className="btn btn-ghost" href={site.sourceUrl} target="_blank" rel="noreferrer">
                   <GitHubGlyph size={16} /> Read the source
@@ -439,8 +439,8 @@ export default function Home() {
               privacy claims on this page can be checked rather than believed.
             </p>
             <div className="hero-actions finale-actions">
-              <a className="btn btn-primary" href={appStoreHref}>
-                Get diple {site.appStoreUrl ? null : <small>Soon</small>}
+              <a className="btn btn-primary" {...appStoreLink}>
+                Download on the App Store
               </a>
               <a className="btn btn-ghost" href={site.sourceUrl} target="_blank" rel="noreferrer">
                 <GitHubGlyph size={16} /> GitHub

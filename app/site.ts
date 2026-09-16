@@ -7,8 +7,13 @@ export const site = {
     "A reader and a notebook in one app. EPUB, PDF and saved articles on one side, your notes, journal and tasks on the other. No account, no ads, nothing to subscribe to.",
   sourceUrl: "https://github.com/outsideness-x/diple",
   mailUrl: "mailto:outsidenessx@gmail.com",
-  /** The listing is not public yet; set this string and every button becomes a real link. */
-  appStoreUrl: null as string | null,
+  /** No storefront in the path: Apple sends the reader to their own country's listing. */
+  appStoreUrl: "https://apps.apple.com/app/id6806528966" as string | null,
 } as const;
 
 export const appStoreHref = site.appStoreUrl ?? "/#download";
+
+/** Spread onto any button that leads to the listing: it leaves the site, so it opens away. */
+export const appStoreLink = site.appStoreUrl
+  ? { href: site.appStoreUrl, target: "_blank", rel: "noreferrer" }
+  : { href: "/#download" };

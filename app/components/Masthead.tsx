@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { appStoreHref, site } from "../site";
+import { appStoreLink, site } from "../site";
 import { Mark } from "./Mark";
 import { GitHubGlyph } from "./glyphs";
 
@@ -46,7 +46,7 @@ export function Masthead() {
           >
             <GitHubGlyph />
           </a>
-          <a className="btn btn-primary" href={appStoreHref}>
+          <a className="btn btn-primary" {...appStoreLink}>
             Get diple
           </a>
         </div>

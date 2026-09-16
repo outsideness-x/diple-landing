@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { appStoreHref, site } from "../site";
+import { appStoreLink, site } from "../site";
 import { HeartGlyph } from "./glyphs";
 import { Mark } from "./Mark";
 
@@ -62,7 +62,7 @@ export function Footer() {
             <h3>Elsewhere</h3>
             <ul>
               <li>
-                <Link href={appStoreHref}>App Store</Link>
+                <a {...appStoreLink}>App Store</a>
               </li>
               <li>
                 <Link href="/privacy">Privacy &amp; legal</Link>
