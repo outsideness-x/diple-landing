@@ -207,6 +207,8 @@ button {
 .section {
   position: relative;
   padding-block: clamp(72px, 8.5vw, 128px);
+  /* The bar is sticky, so an anchor has to stop short of it. */
+  scroll-margin-top: 84px;
 }
 
 .section-head {

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useWhenSeen } from "./useWhenSeen";
+import { useStillness } from "./useStillness";
 
 const VIEWS = [
   {
@@ -54,7 +55,9 @@ export function MacTour() {
   const [index, setIndex] = useState(0);
   const [taken, setTaken] = useState(false);
   const holder = useRef<HTMLDivElement>(null);
-  const running = useWhenSeen(holder, 0.25);
+  const seen = useWhenSeen(holder, 0.25);
+  const still = useStillness();
+  const running = seen && !still;
 
   useEffect(() => {
     if (taken || !running) return;

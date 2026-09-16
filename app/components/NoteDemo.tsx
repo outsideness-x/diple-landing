@@ -2,6 +2,7 @@
 
 import { Fragment, useEffect, useRef, useState } from "react";
 import { useWhenSeen } from "./useWhenSeen";
+import { useStillness } from "./useStillness";
 
 const SCRIPT = [
   "## Four moves",
@@ -99,7 +100,9 @@ function Line({ text, last, index }: { text: string; last: boolean; index: numbe
 export function NoteDemo() {
   const [typed, setTyped] = useState(0);
   const holder = useRef<HTMLDivElement>(null);
-  const running = useWhenSeen(holder, 0.4);
+  const seen = useWhenSeen(holder, 0.4);
+  const still = useStillness();
+  const running = seen && !still;
 
   useEffect(() => {
     if (!running || typed >= SCRIPT.length) return;
@@ -110,8 +113,10 @@ export function NoteDemo() {
     return () => window.clearTimeout(timer);
   }, [running, typed]);
 
-  const lines = SCRIPT.slice(0, typed).split("\n");
-  const done = typed >= SCRIPT.length;
+  // Asked for stillness, the note is simply already written.
+  const written = still ? SCRIPT.length : typed;
+  const lines = SCRIPT.slice(0, written).split("\n");
+  const done = written >= SCRIPT.length;
 
   return (
     <div className="note-demo card" ref={holder}>
@@ -120,7 +125,7 @@ export function NoteDemo() {
           <i aria-hidden="true" /> Saved
         </span>
         <span className="note-meta">
-          {done ? 34 : Math.max(0, Math.round(typed / 6))} words · 1 min read
+          {done ? 34 : Math.max(0, Math.round(written / 6))} words · 1 min read
         </span>
       </header>
 

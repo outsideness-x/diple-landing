@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { useStillness } from "./useStillness";
 import { PageGlyph, PenGlyph, QuoteGlyph, SearchGlyph, ShelfGlyph, SunGlyph, InboxGlyph, BoxGlyph } from "./glyphs";
 
 type Room = "reading" | "notes";
@@ -54,14 +55,15 @@ export function Rooms() {
   const [room, setRoom] = useState<Room>("reading");
   const [taken, setTaken] = useState(false);
   const holder = useRef<HTMLDivElement>(null);
+  const still = useStillness();
 
   useEffect(() => {
-    if (taken) return;
+    if (taken || still) return;
     const timer = window.setInterval(() => {
       setRoom((current) => (current === "reading" ? "notes" : "reading"));
     }, 5200);
     return () => window.clearInterval(timer);
-  }, [taken]);
+  }, [taken, still]);
 
   const cross = (next: Room) => {
     setTaken(true);
