@@ -13,21 +13,31 @@
 
 /* ─────────────────────────────  Devices  ───────────────────────────── */
 
+/*
+ * The frame is drawn in proportions, not in pixels.
+ *
+ * A device's corner radius is a fraction of its width, so a radius in px is only ever right at
+ * one size: at 380 it was a phone and at 240 — the hero — it was a lozenge with the corners
+ * eating the status bar. The phone is its own query container, and every part of the body is a
+ * share of its width: the band, the black bezel, and a screen radius of 13% of the glass, which
+ * is what the captures themselves are cut to.
+ */
 .phone {
+  container-type: inline-size;
   position: relative;
   width: 100%;
   max-width: 380px;
-  padding: 7px;
-  border-radius: 54px;
-  background: linear-gradient(145deg, #4a4a50 0%, #1b1b1f 22%, #0d0d10 50%, #1b1b1f 78%, #4a4a50 100%);
+  padding: 0.65cqw;
+  border-radius: 15cqw;
+  background: linear-gradient(145deg, #55555c 0%, #1b1b1f 20%, #0d0d10 50%, #1b1b1f 80%, #55555c 100%);
   box-shadow: 0 50px 90px -46px rgba(0, 0, 0, 0.95), 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 .phone-screen {
   position: relative;
   aspect-ratio: 1320 / 2868;
-  border: 5px solid #050506;
-  border-radius: 48px;
+  border: 1.9cqw solid #05050699;
+  border-radius: 14.3cqw;
   overflow: hidden;
   background: #000;
 }
