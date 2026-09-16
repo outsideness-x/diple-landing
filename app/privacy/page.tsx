@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { site } from "../site";
+import { Masthead } from "../components/Masthead";
+import { Footer } from "../components/Footer";
+import { ArrowUpRightGlyph } from "../components/glyphs";
+import "../landing.css";
+import "./privacy.css";
 
-const sourceUrl = "https://github.com/outsideness-x/diple";
-const mailUrl = "mailto:outsidenessx@gmail.com";
+const sourceUrl = site.sourceUrl;
+const mailUrl = site.mailUrl;
 
 export const metadata: Metadata = {
   title: "Privacy & legal — diple.",
@@ -11,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 function Arrow() {
-  return <span aria-hidden="true">↗</span>;
+  return <ArrowUpRightGlyph />;
 }
 
 function LegalSection({
@@ -33,25 +38,14 @@ function LegalSection({
 
 export default function PrivacyPage() {
   return (
-    <main className="legal-page" id="top">
-      <header className="legal-masthead">
-        <Link className="legal-wordmark" href="/" aria-label="Back to diple home">
-          diple.
-        </Link>
-        <p>Privacy &amp; legal</p>
-        <a href={sourceUrl} target="_blank" rel="noreferrer">
-          GitHub <Arrow />
-        </a>
-      </header>
-
-      <section className="legal-hero">
-        <p className="section-index">Private by architecture</p>
-        <h1>
-          Your reading<br />
-          <em>belongs to you.</em>
-        </h1>
+    <>
+      <Masthead />
+      <main className="legal-page" id="top">
+      <section className="legal-hero wrap">
+        <p className="kicker">Private by architecture</p>
+        <h1 className="display">Your reading belongs to you.</h1>
         <div className="legal-hero-meta">
-          <p>
+          <p className="lede">
             diple does not collect, sell or profile personal data. This page
             explains what stays on your device, what may pass through your own
             iCloud account, and the limits of the software.
@@ -60,7 +54,7 @@ export default function PrivacyPage() {
         </div>
       </section>
 
-      <div className="legal-layout">
+      <div className="legal-layout wrap">
         <aside className="legal-index" aria-label="On this page">
           <p>On this page</p>
           <a href="#collection">Data collection</a>
@@ -253,11 +247,8 @@ export default function PrivacyPage() {
         </article>
       </div>
 
-      <footer className="legal-footer">
-        <Link href="/">diple.</Link>
-        <p>Private reading, in public source.</p>
-        <a href="#top">Back to top ↑</a>
-      </footer>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }
