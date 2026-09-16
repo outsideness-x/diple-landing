@@ -29,7 +29,6 @@
   --vellum: #e6d4b5;
   --accent: var(--vellum);
   --accent-soft: color-mix(in srgb, var(--accent) 14%, transparent);
-  --accent-glow: color-mix(in srgb, var(--accent) 30%, transparent);
   --on-accent: #0b0b0f;
 
   /* The four colours a passage can be marked with. Blue was withdrawn from the picker. */
@@ -220,7 +219,7 @@ button {
 
 .rule {
   height: 1px;
-  background: linear-gradient(90deg, var(--hairline), transparent);
+  background: var(--hairline);
   border: 0;
   margin: 0;
 }
@@ -320,12 +319,10 @@ button {
 .btn-primary {
   background: var(--accent);
   color: var(--on-accent);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.35) inset, 0 18px 40px -24px var(--accent-glow);
 }
 
 .btn-primary:hover {
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 22px 60px -22px var(--accent-glow);
-  background: color-mix(in srgb, var(--accent) 92%, white);
+  background: color-mix(in srgb, var(--accent) 88%, white);
 }
 
 .btn-ghost {
@@ -367,11 +364,7 @@ button {
   position: relative;
   border: 1px solid var(--hairline);
   border-radius: 20px;
-  background:
-    linear-gradient(180deg, rgba(243, 238, 229, 0.045), rgba(243, 238, 229, 0.012));
-  box-shadow:
-    inset 0 1px 0 rgba(243, 238, 229, 0.06),
-    0 40px 70px -50px rgba(0, 0, 0, 0.9);
+  background: var(--surface);
   overflow: hidden;
 }
 

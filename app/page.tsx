@@ -77,7 +77,6 @@ export default function Home() {
       <main id="top">
         {/* ───────────────────────────  Hero  ─────────────────────────── */}
         <section className="hero">
-          <div className="hero-ground" aria-hidden="true" />
           <div className="wrap hero-inner">
             <div className="hero-copy" data-reveal>
               <Mark id="hero-mark" motion="write" className="hero-mark" />
@@ -430,7 +429,6 @@ export default function Home() {
 
         {/* ───────────────────────────  Download  ─────────────────────────── */}
         <section className="finale" id="download">
-          <div className="hero-ground" aria-hidden="true" />
           <div className="wrap finale-inner" data-reveal>
             <Mark id="finale-mark" motion="write" className="finale-mark" />
             <h2 className="display finale-title">Keep what keeps you.</h2>
